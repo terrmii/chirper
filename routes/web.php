@@ -39,5 +39,8 @@ Route::post('/userData', [FormInfor::class, 'store'])->name('userData.store');
 // Delete
 Route::delete('/', [UserDataController::class, 'destroy'])->name('eliminar');
 
+Route::post('/', [UserDataController::class, 'edit'])->name('editar');
+
+
 
 require __DIR__.'/auth.php';

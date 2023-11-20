@@ -137,43 +137,49 @@ color: #9b9ca1;
             <h3>Mi Perfil</h3>
             <hr>
           </div>
-          <!-- Form START -->
-          <form class="file-upload">
+          <div class="file-upload">
+            
+          
             <div class="row mb-5 gx-5">
               <!-- Contact detail -->
               <div class="col-xxl-8 mb-5 mb-xxl-0">
                 <div class="bg-secondary-soft px-4 py-5 rounded">
-                  <div class="row g-3">
-                    <h4 class="mb-4 mt-0">Datos de perfil</h4>
-                    <!-- Nombre -->
-                    <div class="col-md-6">
-                      <label class="form-label">Nombre *</label>
-                      <input disabled type="text" class="form-control" value="{{ Auth::user()->name }}">
-                    </div>
-                    <!-- Localidad -->
-                    <div class="col-md-6">
-                      <label class="form-label">Localidad</label>
-                      <input disabled type="text" class="form-control"aria-label="Last name" value="{{ $resultado->Localidad }}">
-                    </div>
-                    <!-- Codigo Postal -->
-                    <div class="col-md-6">
-                      <label class="form-label">Codigo Postal</label>
-                      <input disabled type="text" class="form-control"aria-label="Phone number"
-                        value="{{ $resultado->CodigoPostal }}">
-                    </div>
-                    <!-- Numero de contacto -->
-                    <div class="col-md-6">
-                      <label class="form-label">Numero de contacto</label>
-                      <input disabled type="text" class="form-control"aria-label="Telefono"
-                        value="{{ $resultado->NumeroContacto }}">
-                    </div>
-                    <!-- Informacion adicional -->
-                    <div class="col-md-6">
-                      <label class="form-label">Informacion adicional</label>
-                      <input disabled type="text" class="form-control" aria-label="Informacion Adicional"
-                        value="{{ $resultado->InformacionAdicional }}">
-                    </div>
-                  </div> <!-- Row END -->
+
+                  <form action="{{ route('editar') }}" method="post" id="formEditar">
+                    @csrf
+                    <div class="row g-3">
+                      <h4 class="mb-4 mt-0">Datos de perfil</h4>
+                      <!-- Nombre -->
+                      <div class="col-md-6">
+                        <label class="form-label">Nombre *</label>
+                        <input type="text" disabled class="form-control" value="{{ Auth::user()->name }}">
+                      </div>
+                      <!-- Localidad -->
+                      <div class="col-md-6">
+                        <label class="form-label">Localidad</label>
+                        <input type="text" class="form-control"aria-label="Last name" name="Localidad" value="{{ $resultado->Localidad }}">
+                      </div>
+                      <!-- Codigo Postal -->
+                      <div class="col-md-6">
+                        <label class="form-label">Codigo Postal</label>
+                        <input type="text" class="form-control" name="CodigoPostal" aria-label="Phone number"
+                          value="{{ $resultado->CodigoPostal }}">
+                      </div>
+                      <!-- Numero de contacto -->
+                      <div class="col-md-6">
+                        <label class="form-label">Numero de contacto</label>
+                        <input type="text" class="form-control" name="NumeroContacto" aria-label="Telefono"
+                          value="{{ $resultado->NumeroContacto }}">
+                      </div>
+                      <!-- Informacion adicional -->
+                      <div class="col-md-6">
+                        <label class="form-label">Informacion adicional</label>
+                        <input type="text" class="form-control" name="InformacionAdicional" aria-label="Informacion Adicional"
+                          value="{{ $resultado->InformacionAdicional }}">
+                      </div>
+                    </div> <!-- Row END -->
+                  </form>   
+
                 </div>
               </div>
               <!-- Upload profile -->
@@ -201,16 +207,20 @@ color: #9b9ca1;
 
             <!-- button -->
             <div class="gap-3 d-md-flex justify-content-md-end text-center">
-                 <!-- ELIMINAR -->
+              <!-- ELIMINAR -->
               <form action="{{ route('eliminar') }}" method="post">
               @csrf
               @method('DELETE')
 
               <button class="btn btn-danger btn-lg" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar tus datos?')">Eliminar mis datos</button>
               </form>
-              <button type="button" class="btn btn-primary btn-lg">Update profile</button>
+
+              <!-- BOTON EDITAR -->
+              <button class="btn btn-info btn-lg" form="formEditar" type="submit">Editar mis datos</button>            
+              
+              
             </div>
-          </form> <!-- Form END -->
+          </div>
         </div>
       </div>
       @endforeach
