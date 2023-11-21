@@ -124,12 +124,9 @@ color: #9b9ca1;
     @auth
     <div class="container">
       <!-- Hacer el select con el fk recogiendo la id del usuario con el cual hemos iniciado sesion -->
-    @php
-      $resultados = DB::select('SELECT Localidad, CodigoPostal, NumeroContacto, InformacionAdicional FROM usersData
-      WHERE UsersID = ' . auth()->id());
-    @endphp
 
-    @foreach ($resultados as $resultado)
+
+    @foreach ($userDataFk as $resultado)
       <div class="row">
         <div class="col-12">
           <!-- Page title -->

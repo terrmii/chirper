@@ -24,16 +24,22 @@ class UserDataController extends Controller
             'NumeroContacto' => $request->input('NumeroContacto'),
             'InformacionAdicional' => $request->input('InformacionAdicional'), ]);
 
-            return view('welcome');
+            return redirect('/');
     }
 
     public function destroy()
     {
         UsersData::where('UsersID', Auth::user()->id)->delete();
-        return view('welcome');
+        return redirect('/');
 
     }
     
+    public function comprobar()
+    {
+        $userDataFk = UsersData::where('UsersID', Auth::user()->id)->get();
+    
+        return view('welcome', ['userDataFk' => $userDataFk]);
 
+    }
     
 }

@@ -32,7 +32,9 @@ Route::middleware('auth')->group(function () {
 
 
 });
-Route::get('/', [UserDataController::class, 'index']);
+// VER TODOS LOS USUARIOS
+// Route::get('/', [UserDataController::class, 'index']);
+
 // CREAR USUARIOS Ruta para procesar el formulario y almacenar el usuario
 Route::post('/userData', [FormInfor::class, 'store'])->name('userData.store');
     
@@ -40,6 +42,9 @@ Route::post('/userData', [FormInfor::class, 'store'])->name('userData.store');
 Route::delete('/', [UserDataController::class, 'destroy'])->name('eliminar');
 
 Route::post('/', [UserDataController::class, 'edit'])->name('editar');
+
+// Comprobar los datos del usuario autenticado
+Route::get('/', [UserDataController::class, 'comprobar']);
 
 
 
