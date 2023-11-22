@@ -43,9 +43,10 @@ Route::delete('/', [UserDataController::class, 'destroy'])->name('eliminar');
 
 Route::post('/', [UserDataController::class, 'edit'])->name('editar');
 
-// Comprobar los datos del usuario autenticado
+// VER USUARIO Comprobar los datos del usuario autenticado
 Route::get('/', [UserDataController::class, 'comprobar']);
 
+Route::get('/insertarVista', [FormInfor::class, 'insertarVista']);
 
 
 require __DIR__.'/auth.php';

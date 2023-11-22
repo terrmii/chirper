@@ -45,4 +45,17 @@ class FormInfor extends Controller
     return redirect('/');
 }
 
+public function insertarVista(){
+    // Crear un nuevo usuario en la base de datos
+$usersData = new UsersData;
+//Variable local ->CampoEnLaBBDD = Variable ->input("nombre del name del formulario")
+$usersData->Localidad = 'Vallaolid';
+$usersData->CodigoPostal = '20012';
+$usersData->NumeroContacto = '645008822';
+$usersData->InformacionAdicional = 'Soy muy majo';
+$usersData->UsersID = '3';
+// Guardar el usuario
+$usersData->save();
+}
+
 }

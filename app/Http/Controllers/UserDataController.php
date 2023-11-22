@@ -41,5 +41,7 @@ class UserDataController extends Controller
         return view('welcome', ['userDataFk' => $userDataFk]);
 
     }
+
+
     
 }
